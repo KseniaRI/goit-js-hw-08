@@ -14,5 +14,10 @@ function onTimeUpdate(){
 
 function onPageReload() {
         const currentTime = localStorage.getItem("videoplayer-current-time");
-        player.setCurrentTime(currentTime);
+        player.setCurrentTime(currentTime).catch((error) => {
+                switch (error.name) {
+                        case 'RangeError':
+                                break;
+                }
+        });
 }
